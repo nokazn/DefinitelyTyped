@@ -91,7 +91,12 @@ player.on("not_ready", (data: Spotify.WebPlaybackInstance) => {
     console.log("Connected with Device ID", device_id);
 });
 
-player.on("player_state_changed", (playbackState: Spotify.PlaybackState) => {
+player.on("player_state_changed", (playbackState: Spotify.PlaybackState | null) => {
+    if (playbackState == null) {
+        console.error('User is not playing music through the Web Playback SDK');
+        return;
+    }
+
     const { position, duration } = playbackState;
     const { current_track } = playbackState.track_window;
 

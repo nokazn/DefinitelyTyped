@@ -95,7 +95,7 @@ declare namespace Spotify {
 
     type ErrorListener = (err: Error) => void;
     type PlaybackInstanceListener = (inst: WebPlaybackInstance) => void;
-    type PlaybackStateListener = (s: PlaybackState) => void;
+    type PlaybackStateListener = (s: PlaybackState | null) => void;
 
     type AddListenerFn =
         & ((event: 'ready' | 'not_ready', cb: PlaybackInstanceListener) => void)
